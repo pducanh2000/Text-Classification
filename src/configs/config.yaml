@@ -1,0 +1,32 @@
+# Seed for reproducibility
+'seed' : 352
+
+# Path to data
+"train_csv_path": /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/data/train.csv
+"test_csv_path" : /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/data/test.csv
+"train_essay_folder" : /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/data/train
+"test_essay_folder" : /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/data/test
+"sample_submission_path": /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/data/sample_submission.csv
+    
+# Model config
+'model_name' : "microsoft/deberta-v3-base"
+'max_len' : 512
+'num_classes': 3
+     
+# Training hyper params
+'resume' : False
+'num_epoch': 8
+'train_batch_size': 4
+'val_batch_size' : 4
+'n_accumulate': 2
+'lr': 5e-5
+'T_max': 500
+'min_lr': 1e-6
+'weight_decay': 0.001
+     
+'device': torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+'best_checkpoint': /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/best.pt
+'last_checkpoint': /content/drive/MyDrive/kaggle_projects/feedback-prize-effectiveness/last.pt
+
+# Others
+'label_map': {"Ineffective": 0, "Adequate": 1, "Effective": 2}
