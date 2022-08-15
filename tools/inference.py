@@ -1,12 +1,6 @@
 import argparse
-import pandas as pd
-from sklearn.model_selection import StratifiedKFold
-from torch.utils.data import DataLoader
-from transformers import AutoTokenizer, DataCollatorWithPadding
-from src.dataset.dataloader import LabeledFeedBackDataset
 from src.configs.config import Cfg
 from src.engine.factory import Engine
-from src.utils.visualize import plot_log
 
 
 def get_args_parser():
@@ -20,7 +14,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     cfg = Cfg().load_config_from_file(args.cfg)
-
-    tokenizer = AutoTokenizer.from_pretrained(cfg["model_name"])
-
-    df = pd.read_csv(cfg["train_csv_path"])
+    submission = Engine(cfg).inference()
